@@ -1,7 +1,7 @@
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const nodemailer = require('nodemailer');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config;
 
 dotenv.config()
 const cors = require('cors');
