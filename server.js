@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 const cors = require('cors');
 var app = express();
-const prisma = new PrismaClient({ datasources: {  db: { url: "postgresql://referral_db_user:vKTkDQfKMdgeTsMuYBVpcNpwXV6jv4Na@dpg-cqemmh1u0jms739fm3mg-a:5432/referral_db"} } });
+const prisma = new PrismaClient();
 
 app.use(cors());
 app.use(express.json());
@@ -19,10 +19,10 @@ app.post('/referrals', async (req, res) => {
 
   try {
     // Save referral data
-    const referral = await prisma.referral.create({
+    const referrals = await prisma.referral.create({
       data: { referrerName, referrerMail, refereeName, refereeMail },
     });
-    res.status(201).json(referral);
+    res.status(201).json(referrals);
 
     //Send referral email
     const transporter = nodemailer.createTransport({
