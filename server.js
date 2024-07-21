@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config()
 const cors = require('cors');
 var app = express();
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ datasources: {  db: { url: "postgresql://referral_db_user:vKTkDQfKMdgeTsMuYBVpcNpwXV6jv4Na@dpg-cqemmh1u0jms739fm3mg-a:5432/referral_db"} } });
 
 app.use(cors());
 app.use(express.json());
